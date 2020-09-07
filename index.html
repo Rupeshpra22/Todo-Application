@@ -24,7 +24,7 @@
             </button>
         </div>
 
-        <div class="select">
+        <div class="select" onchange="filterTodo(event)">
             <select name="todos" class="filter-todo">
                 <option value="all">All</option>
                 <option value="Completed">Completed</option>
@@ -34,19 +34,7 @@
     </form>
 
     <div class="todo-container">
-        <ul class="todo-list">
-            <!--below is the structure we want to achieve- we are doing this by using javascript
-            <div class="todo"> 
-                <li></li>
-                <button>Delete</button>
-                <button>Checked</button>
-            </div>
-             <div class="todo"> 
-                <li></li>
-                <button>Delete</button>
-                <button>Checked</button>
-            </div>-->
-        </ul>
+        <ul class="todo-list"></ul>
     </div>
 </body>
 <script src="./app.js"></script>

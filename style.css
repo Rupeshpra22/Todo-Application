@@ -15,6 +15,11 @@ header{
     font-size:1.5rem;
 }
 
+.input-button{
+    display: flex;
+    justify-content: center;
+}
+
 header, form{
     min-height:20vh;
     display: flex;
@@ -31,14 +36,14 @@ form input, form button{
 }
 
 form input{
-    width: 30%;
+    width: 80%;
 }
 
 form button{
     color: #d88771;
     background-color: white;
     cursor:pointer;
-    transition: all 0.3s ease
+    transition: all 0.3s ease;
 }
 
 form button:hover{
@@ -56,7 +61,6 @@ form button:hover{
     list-style: none;
     max-width: 30%;
     min-width: 30%;
-    white-space: nowrap;
 }
 
 .todo{
@@ -66,7 +70,7 @@ form button:hover{
     margin:0.5rem;
     background-color: white;
     color:black;
-    font-size: 1.5rem;
+    font-size: 1rem;
     transition: all 0.5s ease;
 }
 
@@ -74,6 +78,7 @@ form button:hover{
     flex:1;
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .completed-btn,.trash-btn {
@@ -108,6 +113,44 @@ form button:hover{
     opacity: 0;
 }
 
+select{
+    /* remove the existing css for select element */
+    -webkit-apperance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline:none;
+    box-shadow: none;
+    border: none;
+}
+
+.select{
+    margin:1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+select{
+    color:#ff6f47;
+    width:10rem;
+    cursor: pointer;
+    padding:1rem;
+}
+
+.select::after{
+    content:"\25BC";
+    position: absolute;
+    background-color:#ff6f47;
+    top:0;
+    right:0px;
+    padding:1rem;
+    pointer-events: none;
+    transition: all .5s ease;
+}
+
+.select:hover::after{
+    background-color:white;
+    color:#ff6f47;
+}
 @media screen and (max-width:680px){
     form input{
         width: 50%;
@@ -116,7 +159,9 @@ form button:hover{
 
 @media screen and (max-width:900px){
     .todo-list{
-        max-width: 85%;
+        max-width: 90%;
     }
-    
+    form{
+        flex-direction: column;
+    }
 }

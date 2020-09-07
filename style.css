@@ -111,17 +111,12 @@ form button:hover{
 @media screen and (max-width:680px){
     form input{
         width: 50%;
-    }
-
-    .todo-list{
-        max-width: 70%;
-    }
-    
+    }    
 }
 
 @media screen and (max-width:900px){
     .todo-list{
-        max-width: 70%;
+        max-width: 85%;
     }
     
 }

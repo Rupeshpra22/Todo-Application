@@ -115,8 +115,9 @@ filterTodo = (event) => {
 
 getTodosFromLocalStorage = () => {
     let todoList;
-    if (localStorage.getItem('todos') === "") {
+    if(localStorage.getItem('todos') === null){
         todoList = [];
+        localStorage.setItem('todos', JSON.stringify(todoList));
         return todoList;
     } else {
         //if todo is already present get the todos from localStorage

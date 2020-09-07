@@ -14,40 +14,42 @@ addTodo = (event) => {
 
     //Create li
     const newTodo = document.createElement('li');
-    if(todoInput.value != ""){
-        newTodo.innerText=todoInput.value;
-    //ways of giving text to a element
-    //newTodo.innerHTML="hey"
-    //newTodo.append(document.createTextNode('hey'))
-    newTodo.classList.add('todo-item');
-    todoDiv.appendChild(newTodo);
-    todoInput.value=""
+    if (todoInput.value != "") {
+        newTodo.innerText = todoInput.value;
+        newTodo.title = todoInput.value;
+        //ways of giving text to a element
+        //newTodo.innerHTML="hey"
+        //newTodo.append(document.createTextNode('hey'))
+        newTodo.classList.add('todo-item');
+        todoDiv.appendChild(newTodo);
+        todoInput.value = ""
 
-    //Check mark button
-    const completedButton = document.createElement('button');
-    //this will add text to button
-    //completedButton.innerText="Completed"
-    //This is how we can also add an element inside a element
-    completedButton.innerHTML = '<i class="fas fa-check"></i>';
-    completedButton.classList.add('completed-btn');
-    todoDiv.appendChild(completedButton);
 
-    //Check trash button
-    const trashButton = document.createElement('button');
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-    trashButton.classList.add('trash-btn');
-    todoDiv.appendChild(trashButton);
+        //Check mark button
+        const completedButton = document.createElement('button');
+        //this will add text to button
+        //completedButton.innerText="Completed"
+        //This is how we can also add an element inside a element
+        completedButton.innerHTML = '<i class="fas fa-check"></i>';
+        completedButton.classList.add('completed-btn');
+        todoDiv.appendChild(completedButton);
 
-    //Appending todoDiv to ul
-    todoList.appendChild(todoDiv);
+        //Check trash button
+        const trashButton = document.createElement('button');
+        trashButton.innerHTML = '<i class="fas fa-trash"></i>';
+        trashButton.classList.add('trash-btn');
+        todoDiv.appendChild(trashButton);
+
+        //Appending todoDiv to ul
+        todoList.appendChild(todoDiv);
     }
 }
 
-deleteCheck = (event) =>{
+deleteCheck = (event) => {
     // event.target will give what exactly we are clicking on
     const item = event.target;
     //DELETE TODO
-    if(item.classList[0] === 'trash-btn'){
+    if (item.classList[0] === 'trash-btn') {
         const todo = item.parentElement;
         // with the below code, it looks the fall css
         // will apply and then it will get removed but actually
@@ -65,13 +67,13 @@ deleteCheck = (event) =>{
         //ends, for that we have special eventListener called
         //transitionend(for transition), we also have animationend(for animation)
         // so the below function will run just after the transition gets completed
-        todo.addEventListener('transitionend',()=>{
+        todo.addEventListener('transitionend', () => {
             todo.remove(); //to remove an element
         })
     }
 
     //CHECKMARK
-    if(item.classList[0]==='completed-btn'){
+    if (item.classList[0] === 'completed-btn') {
         const todo = item.parentElement;
         todo.classList.toggle('completed')
     }
@@ -79,6 +81,6 @@ deleteCheck = (event) =>{
 
 //Event Listeners
 todoButton.addEventListener('click', addTodo);
-todoList.addEventListener('click',deleteCheck)
+todoList.addEventListener('click', deleteCheck)
 
 

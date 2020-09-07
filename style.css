@@ -20,6 +20,7 @@ header, form{
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 form input, form button{
@@ -27,6 +28,10 @@ form input, form button{
     font-size: 1.5rem;
     border:none;
     background: white;
+}
+
+form input{
+    width: 30%;
 }
 
 form button{
@@ -48,8 +53,9 @@ form button:hover{
 }
 
 .todo-list{
-    min-width: 30%;
     list-style: none;
+    max-width: 30%;
+    min-width: 30%;
 }
 
 .todo{
@@ -64,7 +70,9 @@ form button:hover{
 }
 
 .todo li{
-    flex:1
+    flex:1;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .completed-btn,.trash-btn {
@@ -97,4 +105,22 @@ form button:hover{
 .fall{
     transform: translateY(8rem) rotateZ(20deg);
     opacity: 0;
+}
+
+@media screen and (max-width:680px){
+    form input{
+        width: 50%;
+    }
+
+    .todo-list{
+        max-width: 70%;
+    }
+    
+}
+
+@media screen and (max-width:900px){
+    .todo-list{
+        max-width: 70%;
+    }
+    
 }

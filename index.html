@@ -8,7 +8,7 @@
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="./favicon.png"/>
+    <link rel="icon" type="image/png" href="./favicon.png" />
     <link rel="stylesheet" href='./style.css'>
 
 </head>
@@ -37,6 +37,27 @@
     <div class="todo-container">
         <ul class="todo-list"></ul>
     </div>
+
+    <!-- Modal -->
+    <div class="modal">
+        <div class="modal-container">
+            <div class="modal-header">Edit your Todo</div>
+            <div class="modal-close">
+
+            </div>
+            <div class="modal-body">
+                <input type="text" class="modal-input" autofocus>
+            </div>
+            <div class="modal-footer">
+                <div class="save" onclick="updateTodo()">Save</div>
+                <div class="cancel" onclick="hideModal()">Cancel</div>
+            </div>
+            <div class="status">
+                <b>Your Todo is updated</b>
+            </div>
+        </div>
+    </div>
+
 </body>
 <script src="./app.js"></script>
 

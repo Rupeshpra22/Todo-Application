@@ -1,11 +1,14 @@
 //Selectors
+const body = document.querySelector("body");
 const todoInput = document.querySelector(".todo-input");
 const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
+const modal = document.querySelector('.modal');
+const modalBody = document.querySelector('.modal-body input');
+const status = document.querySelector('.status');
+let currentTodo = null;
 
 //Functions
-
-
 addTodo = (event, todo) => {
     //Prevent form from submitting
     event.preventDefault();
@@ -45,6 +48,11 @@ addTodo = (event, todo) => {
         trashButton.classList.add('trash-btn');
         todoDiv.appendChild(trashButton);
 
+        //Edit Button
+        const editButton = document.createElement('button');
+        editButton.innerHTML = '<i class="fas fa-edit"></i>';
+        editButton.classList.add('edit-btn');
+        todoDiv.appendChild(editButton);
         //Appending todoDiv to ul
         todoList.appendChild(todoDiv);
         todoInput.value = ""
@@ -86,6 +94,33 @@ deleteCheck = (event) => {
         const todo = item.parentElement;
         todo.classList.toggle('completed')
     }
+
+    //EDIT
+    if (item.classList[0] === 'edit-btn') {
+        modal.style.display = 'flex';
+        const todoText = item.parentNode.innerText;
+        currentTodo = item.parentNode;
+        modalBody.value = todoText;
+        modal.style.opacity = "1";
+    }
+}
+
+hideModal = () => {
+    modal.style.display = 'none';
+}
+
+updateTodo = () => {
+    let previousValue = currentTodo.children[0].innerText;
+    if (modalBody.value != currentTodo.children[0].innerText) {
+        currentTodo.children[0].innerText = modalBody.value;
+        status.style.display = "flex";
+        updateLocalStorage(previousValue, modalBody.value)
+    }
+
+    setTimeout(() => {
+        modal.style.display = 'none';
+        status.style.display = "none";
+    }, 1000)
 }
 
 filterTodo = (event) => {
@@ -115,7 +150,7 @@ filterTodo = (event) => {
 
 getTodosFromLocalStorage = () => {
     let todoList;
-    if(localStorage.getItem('todos') === null){
+    if (localStorage.getItem('todos') === null) {
         todoList = [];
         localStorage.setItem('todos', JSON.stringify(todoList));
         return todoList;
@@ -125,6 +160,7 @@ getTodosFromLocalStorage = () => {
         return todoList;
     }
 }
+
 //Storing Todolist in LocalStorage
 saveLocalTodos = (todo) => {
     let todos = [];
@@ -136,22 +172,28 @@ saveLocalTodos = (todo) => {
 
 getTodos = () => {
     let todos = getTodosFromLocalStorage();
-    if(todos.length>0){
+    if (todos.length > 0) {
         todos.forEach((todo) => {
             addTodo(event, todo);
         })
     }
 }
 
-removeLocalStorageTodos = (todo) =>{
+removeLocalStorageTodos = (todo) => {
     let todos = getTodosFromLocalStorage();
     let todoName = todo.children[0].innerText;
     let indexOfTodo = todos.indexOf(todoName);
-    todos.splice(indexOfTodo,1);
-    localStorage.setItem('todos',JSON.stringify(todos));
-
-
+    todos.splice(indexOfTodo, 1);
+    localStorage.setItem('todos', JSON.stringify(todos));
 }
+
+updateLocalStorage=(previousValue,newValue)=>{
+    let todos = getTodosFromLocalStorage();
+    let indexOfTodo = todos.indexOf(previousValue);
+    todos[indexOfTodo] = newValue;
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
 //Event Listeners
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteCheck);

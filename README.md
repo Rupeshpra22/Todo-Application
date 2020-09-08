@@ -9,7 +9,7 @@ Things that i learned from this project:
 
 3: LocalStorage in Javascript
 
-I have followed the below youtube video:
+I have followed this youtube video:
 https://www.youtube.com/watch?v=Ttf3CEsEwMQ&t=2527s
 
 Other than following the video, i have also made this application full responsive.

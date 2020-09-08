@@ -14,7 +14,11 @@ Things that i learned from this project:
 I have followed this youtube video:
 https://www.youtube.com/watch?v=Ttf3CEsEwMQ&t=2527s
 
-Other than following the video, i have also made this application full responsive.
+Other than following the video, Following are the features added by me in this project:
+
+1: Made the application responsive
+
+2: Implemented the Edit functionality: Edit and update your todo and also update the localstorage.
 
 If you are a beginner, go give a try, this will clear your some basic concept of Javascript.
 

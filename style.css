@@ -176,6 +176,7 @@ select{
 .modal-container{
     width:30%;
     background-image:linear-gradient(120deg, #e2c35d, #d88771);
+    position: relative;
 }
 
 .modal-header,.modal-footer{
@@ -188,6 +189,14 @@ select{
     padding:15px 5px;
     display: flex;
     justify-content:center
+}
+
+.cancel-icon{
+    position: absolute;
+    right: 18px;
+    cursor: pointer;
+    top: 13px;
+    font-size: 18px;
 }
 
 .save,.cancel{

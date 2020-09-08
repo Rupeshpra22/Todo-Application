@@ -1,6 +1,8 @@
 # Todo-Application
 Basic Todo Application using HTML,CSS,Javascript
 
+DEMO: https://rupeshpra22.github.io/Todo-Application/
+
 Things that i learned from this project:
 
 1: DOM Manipulation
